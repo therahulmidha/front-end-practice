@@ -1,0 +1,127 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "title rating reviewCount rateWin"
+    "upload . . ."
+    "overview overview overview overview"
+    "imageColors . . ."
+    "preview preview preview preview"
+    "images images images images";
+  row-gap: 10px;
+}
+
+.title {
+  text-align: center;
+  grid-area: title;
+  font-weight: bolder;
+}
+
+.rating {
+  text-align: center;
+  grid-area: rating;
+  font-weight: bolder;
+  color: green;
+}
+
+.reviewCount {
+  text-align: center;
+  grid-area: reviewCount;
+}
+
+.rateWin {
+  text-align: center;
+  grid-area: rateWin;
+}
+
+.reviewCount a,
+.rateWin a {
+  text-decoration: none;
+}
+.upload {
+  grid-area: upload;
+}
+
+.upload button {
+  background-color: green;
+  border-radius: 5px;
+  height: 150%;
+  color: white;
+  border-color: green;
+}
+
+.overview {
+  grid-area: overview;
+}
+
+#hr1,
+#hr2,
+#hr3 {
+  display: inline-block;
+}
+
+#hr1 {
+  width: 2%;
+  background-color: gray;
+  height: 1px;
+}
+#hr2 {
+  width: 7%;
+  height: 1px;
+  background-color: red;
+}
+#hr3 {
+  height: 1px;
+  background-color: gray;
+  width: 85%;
+}
+
+.imageColors {
+  grid-area: imageColors;
+}
+.preview {
+  grid-area: preview;
+  text-align: center;
+}
+.preview img {
+  height: 500px;
+  width: 500px;
+}
+.images {
+  grid-area: images;
+  text-align: center;
+}
+
+.images img {
+  height: 50px;
+  width: 50px;
+}
+
+#prevImage {
+  grid-area: prevImage;
+  display: inline;
+  margin: 0;
+  position: relative;
+  top: 50%;
+}
+
+#nextImage {
+  grid-area: nextImage;
+  display: inline;
+  margin: 0;
+  position: relative;
+  top: 50%;
+}
+
+#currentImage {
+  grid-area: currentImage;
+  display: inline;
+}
+
+.preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "prevImage currentImage nextImage";
+}
