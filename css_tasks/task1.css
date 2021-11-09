@@ -1,0 +1,44 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr auto 1fr;
+  width: 50vw;
+  height: 50vh;
+  margin: 0 auto;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+/* Mobile devices */
+@media (min-width: 320px) and (max-width: 480px) {
+  .container {
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: auto;
+    width: 50vw;
+    height: 50vh;
+    margin: 0 auto;
+  }
+}
+
+/* Ipads, tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: 33.33vw 33.33vw 33.33vw;
+    grid-template-rows: auto;
+    width: 50vw;
+    height: 50vh;
+    margin: 0 auto;
+  }
+}
+
+/* 
+Other widths:
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV 
+*/

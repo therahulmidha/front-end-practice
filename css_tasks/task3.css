@@ -125,3 +125,8 @@
   grid-template-rows: 1fr;
   grid-template-areas: "prevImage currentImage nextImage";
 }
+
+.prevNextIcon {
+  font-size: 48px;
+  color: red;
+}
