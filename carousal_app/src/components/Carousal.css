@@ -1,0 +1,57 @@
+hr {
+    width: 75%;
+}
+
+.imageColors {
+  grid-area: imageColors;
+}
+.preview {
+  grid-area: preview;
+  text-align: center;
+}
+.preview img {
+  height: 300px;
+  width: 500px;
+}
+.images {
+  grid-area: images;
+  text-align: center;
+}
+
+.images img {
+  height: 50px;
+  width: 50px;
+}
+
+#prevImage {
+  grid-area: prevImage;
+  display: inline;
+  margin: 0;
+  position: relative;
+  top: 50%;
+}
+
+#nextImage {
+  grid-area: nextImage;
+  display: inline;
+  margin: 0;
+  position: relative;
+  top: 50%;
+}
+
+#currentImage {
+  grid-area: currentImage;
+  display: inline;
+}
+
+.preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "prevImage currentImage nextImage";
+}
+
+.prevNextIcon {
+  font-size: 48px;
+  color: red;
+}
