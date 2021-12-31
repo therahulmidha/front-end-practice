@@ -16,6 +16,7 @@ hr {
 .images {
   grid-area: images;
   text-align: center;
+  z-index: 1000;
 }
 
 .images img {
@@ -29,6 +30,7 @@ hr {
   margin: 0;
   position: relative;
   top: 50%;
+  height: 50%;
 }
 
 #nextImage {
@@ -37,6 +39,7 @@ hr {
   margin: 0;
   position: relative;
   top: 50%;
+  height: 50%;
 }
 
 #currentImage {
@@ -54,4 +57,8 @@ hr {
 .prevNextIcon {
   font-size: 48px;
   color: red;
+}
+
+.selected-image {
+  border: 3px red solid;
 }

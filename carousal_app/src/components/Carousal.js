@@ -1,6 +1,7 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, React } from "react";
 import "./Carousal.css";
-
+const abc = 0;
+const abc1 = 0;
 const images = [
   {
     id: 1,
@@ -55,7 +56,12 @@ const images = [
 export const Carousal = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedImageSrc, setSelectedImageSrc] = useState(images[0].src);
-  
+  const changeImageHandler = (event) => {
+    console.log(event.target.id, images[event.target.id - 1].src);
+    setSelectedImageIndex(+event.target.id - 1);
+    setSelectedImageSrc(images[+event.target.id - 1].src);
+  };
+
   const leftClickHandler = () => {
     const newIndex =
       selectedImageIndex === 0 ? images.length - 1 : selectedImageIndex - 1;
@@ -69,19 +75,14 @@ export const Carousal = () => {
     setSelectedImageIndex(newIndex);
     setSelectedImageSrc(images[newIndex].src);
   };
-  
+
   return (
     <Fragment>
       <div className="preview">
         <div id="prevImage" className="prevNextIcon">
           <span className="fa fa-angle-left" onClick={leftClickHandler}></span>
         </div>
-        <img
-          key={selectedImageIndex}
-          src={selectedImageSrc}
-          alt=""
-          id="currentImage"
-        />
+        <img src={selectedImageSrc} alt="" id="currentImage" />
         <div id="nextImage" className="prevNextIcon">
           <span
             className="fa fa-angle-right"
@@ -92,7 +93,16 @@ export const Carousal = () => {
       <hr />
       <div className="images">
         {images.map((image) => (
-          <img key={image.id} src={image.src} alt="" />
+          <img
+            key={image.id}
+            id={image.id}
+            src={image.src}
+            alt=""
+            className={
+              selectedImageIndex === image.id - 1 ? "selected-image" : ""
+            }
+            onClick={changeImageHandler}
+          />
         ))}
       </div>
     </Fragment>
