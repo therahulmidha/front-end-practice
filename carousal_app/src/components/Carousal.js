@@ -1,7 +1,5 @@
 import { Fragment, useState, React } from "react";
 import "./Carousal.css";
-const abc = 0;
-const abc1 = 0;
 const images = [
   {
     id: 1,
@@ -57,21 +55,22 @@ export const Carousal = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedImageSrc, setSelectedImageSrc] = useState(images[0].src);
   const changeImageHandler = (event) => {
-    console.log(event.target.id, images[event.target.id - 1].src);
-    setSelectedImageIndex(+event.target.id - 1);
-    setSelectedImageSrc(images[+event.target.id - 1].src);
+    modifyImageIndexSrc(+event.target.id);
   };
 
   const leftClickHandler = () => {
     const newIndex =
       selectedImageIndex === 0 ? images.length - 1 : selectedImageIndex - 1;
-    setSelectedImageIndex(newIndex);
-    setSelectedImageSrc(images[newIndex].src);
+    modifyImageIndexSrc(newIndex);
   };
 
   const rightClickHandler = () => {
     const newIndex =
       selectedImageIndex === images.length - 1 ? 0 : selectedImageIndex + 1;
+    modifyImageIndexSrc(newIndex);
+  };
+
+  const modifyImageIndexSrc = (newIndex) => {
     setSelectedImageIndex(newIndex);
     setSelectedImageSrc(images[newIndex].src);
   };
@@ -92,14 +91,14 @@ export const Carousal = () => {
       </div>
       <hr />
       <div className="images">
-        {images.map((image) => (
+        {images.map((image, index) => (
           <img
-            key={image.id}
-            id={image.id}
+            key={index}
+            id={index}
             src={image.src}
             alt=""
             className={
-              selectedImageIndex === image.id - 1 ? "selected-image" : ""
+              selectedImageIndex === index ? "selected-image" : ""
             }
             onClick={changeImageHandler}
           />
