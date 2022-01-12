@@ -1,0 +1,19 @@
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  background-color: cadetblue;
+  position: fixed;
+  width: 100%;
+}
+
+.nav-title * {
+    display: block;
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav-links * {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+}
