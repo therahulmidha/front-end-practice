@@ -1,0 +1,47 @@
+.content {
+  width: 40%;
+  margin: 100px auto;
+  border: 2px solid grey;
+}
+
+#output textarea {
+  width: 100%;
+  resize: none;
+  font-size: 50px;
+  /* direction: rtl; */
+}
+
+#controls {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.ac {
+  grid-column: 1/5;
+  text-align: center;
+}
+
+.operator {
+  background-color: #dadce0;
+  border-color: #dadce0;
+  border-color: #dadce0;
+}
+
+.number {
+  background-color: #f1f3f4;
+  border-color: #f1f3f4;
+  border-color: #f1f3f4;
+}
+
+.equals {
+  background-color: #4285f4;
+  border-color: #4285f4;
+  box-shadow: 0 0 1px 1px #4285f4;
+}
+
+button {
+  height: 40px;
+  margin: 2px;
+  font-size: 20px;
+}
