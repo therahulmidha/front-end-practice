@@ -7,10 +7,6 @@ for (const key in controlsChildren) {
   if (typeof controlsChildren[key] === "object") {
     controlsChildren[key].addEventListener("click", (event) => {
       const { btnValue } = event.target.dataset;
-      if (evaluated) {
-        outputArea.textContent = "0";
-        evaluated = false;
-      }
       switch (btnValue) {
         case "AC":
           outputArea.textContent = 0;
@@ -20,15 +16,12 @@ for (const key in controlsChildren) {
           break;
         case "multiply":
           outputArea.textContent = outputArea.textContent + "*";
-
           break;
         case "minus":
           outputArea.textContent = outputArea.textContent + "-";
-
           break;
         case "plus":
           outputArea.textContent = outputArea.textContent + "+";
-
           break;
         case "equals":
           outputArea.textContent = eval(outputArea.textContent);
@@ -41,7 +34,13 @@ for (const key in controlsChildren) {
           if (outputArea.textContent === "0") {
             outputArea.textContent = "";
           }
-          outputArea.textContent = outputArea.textContent + btnValue;
+          // if evaluated and current output is all numbers, reset
+          if (evaluated && /^\d+$/.test(outputArea.textContent)) {
+            evaluated = false;
+            outputArea.textContent = btnValue;
+          } else {
+            outputArea.textContent = outputArea.textContent + btnValue;
+          }
         }
       }
     });
