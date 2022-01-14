@@ -7,6 +7,7 @@ import { ViewUsers } from "./components/ViewUsers/ViewUsers";
 import { NotFound } from "./components/NotFound/NotFound";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Welcome } from "./components/Welcome/Welcome";
+import { Logout } from "./components/Logout/Logout";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path="/users/login">
           <Login />
+        </Route>
+        <Route path="/users/logout">
+          <Welcome />
         </Route>
         <Route path="/users/register">
           <Register />

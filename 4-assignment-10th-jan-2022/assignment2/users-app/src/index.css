@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+* {
+  margin: 0;
+}
+
 .content {
   position: relative;
   top: 100px;
