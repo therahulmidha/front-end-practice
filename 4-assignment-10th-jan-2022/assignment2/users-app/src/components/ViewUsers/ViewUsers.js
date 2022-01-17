@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Redirect } from "react-router-dom";
 import UserContext from "../../store/user-context";
 import "./ViewUsers.css";
 
@@ -7,7 +8,8 @@ export const ViewUsers = (props) => {
   if (!context.isLoggedIn) {
     return (
       <div className="content">
-        <p>Please Login to view this page!</p>
+        {/* <p>Please Login to view this page!</p> */}
+        <Redirect to="/" />
       </div>
     );
   }
@@ -15,7 +17,7 @@ export const ViewUsers = (props) => {
     <div className="content">
       {context.users.length > 0 ? (
         <h1>
-          Users List:{" "}
+          Users List:
           {context.users.map((user, index) => (
             <div key={index}>
               <p>
