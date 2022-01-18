@@ -5,14 +5,7 @@ import "./ViewUsers.css";
 
 export const ViewUsers = (props) => {
   const context = useContext(UserContext);
-  if (!context.isLoggedIn) {
-    return (
-      <div className="content">
-        {/* <p>Please Login to view this page!</p> */}
-        <Redirect to="/" />
-      </div>
-    );
-  }
+
   return (
     <div className="content">
       {context.users.length > 0 ? (
