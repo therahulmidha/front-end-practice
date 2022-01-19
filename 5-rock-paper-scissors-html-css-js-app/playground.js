@@ -69,11 +69,10 @@ function getAllowPlayerWinFlag() {
       return (
         allowPlayerWin % 2 === 0 ||
         allowPlayerWin % 3 === 0 ||
-        allowPlayerWin % 4 === 0
+        allowPlayerWin % 4 === 0 || 
+        allowPlayerWin % 6 === 0 
       );
-    case "Medium":
-      return allowPlayerWin % 2 === 0 || allowPlayerWin % 4 === 0;
     case "Hard":
-      return allowPlayerWin % 4 === 0;
+      return allowPlayerWin % 5 === 0;
   }
 }
