@@ -1,0 +1,14 @@
+body {
+  background-color: cadetblue;
+  text-align: center;
+  color: #fff;
+}
+
+button,
+select {
+  text-align: center;
+  margin: 10px auto;
+  display: block;
+  height: 20px;
+  width: 100px;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="playground.css">
+</head>
+
+<body>
+    <div class="playground">
+        <div class="player-controls">
+            <button onclick="processPlayerMove('Rock')">Rock</button>
+            <button onclick="processPlayerMove('Paper')">Paper</button>
+            <button onclick="processPlayerMove('Scissor')">Scissor</button>
+        </div>
+        <div class="moves">
+            <div id="player-move">
+                <img src="images/paper.png" height="50px" alt="">
+            </div>
+            <div id="computer-move">
+                <img src="images/paper.png" height="50px" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="scoreboard">
+        <h3>Scorecard</h3>
+        <div class="score">
+            You <span id="final-player-score">0</span> Computer <span id="final-computer-score">0</span>
+        </div>
+        <div id="result">
+            Whoever scores 5 first wins!
+        </div>
+        <button id="play-again-btn" onclick="resetGame()">Play Again?</button>
+    </div>
+    <script src="playground.js"></script>
+</body>
+
+</html>

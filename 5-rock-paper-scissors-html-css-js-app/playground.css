@@ -1,0 +1,46 @@
+* {
+  background-color: cadetblue;
+  text-align: center;
+}
+
+.playground {
+  display: flex;
+  margin: 100px 300px;
+}
+
+.player-controls {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+.player-controls button {
+  margin: 10px;
+}
+
+.moves {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin: 0 5px;
+}
+
+.moves * {
+  padding: 20px;
+}
+
+#player-move,
+#computer-move {
+  grid-row: 1 / span 3;
+  width: 50px;
+}
+
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+}
+
+#play-again-btn {
+  width: 90px;
+  margin: 10px auto;
+}

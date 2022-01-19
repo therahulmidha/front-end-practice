@@ -1,17 +1,15 @@
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 import "./App.css";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
 import { ViewUsers } from "./components/ViewUsers/ViewUsers";
 import { NotFound } from "./components/NotFound/NotFound";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Welcome } from "./components/Welcome/Welcome";
-import { Logout } from "./components/Logout/Logout";
-import UserContext from "./store/user-context";
+import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
-  const context = useContext(UserContext);
   return (
     <Fragment>
       <Navbar />
@@ -29,13 +27,9 @@ function App() {
           <Register />
         </Route>
         <Route path="/users/view">
-          {context.isLoggedIn ? (
+          <ProtectedRoute>
             <ViewUsers />
-          ) : (
-            <div className="content">
-              <Redirect to="/" />
-            </div>
-          )}
+          </ProtectedRoute>
         </Route>
         <Route path="*">
           <NotFound />
