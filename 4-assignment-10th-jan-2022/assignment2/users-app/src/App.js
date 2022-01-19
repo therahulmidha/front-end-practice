@@ -1,39 +1,19 @@
 import { Fragment } from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import { Login } from "./components/Login/Login";
-import { Register } from "./components/Register/Register";
-import { ViewUsers } from "./components/ViewUsers/ViewUsers";
-import { NotFound } from "./components/NotFound/NotFound";
 import { Navbar } from "./components/Navbar/Navbar";
-import { Welcome } from "./components/Welcome/Welcome";
-import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
+import { routes } from "./routes";
 
 function App() {
   return (
     <Fragment>
       <Navbar />
       <Switch>
-        <Route path="/" exact>
-          <Welcome />
-        </Route>
-        <Route path="/users/login">
-          <Login />
-        </Route>
-        <Route path="/users/logout">
-          <Welcome />
-        </Route>
-        <Route path="/users/register">
-          <Register />
-        </Route>
-        <Route path="/users/view">
-          <ProtectedRoute>
-            <ViewUsers />
-          </ProtectedRoute>
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
+        {routes.map((mapping) => (
+          <Route path={mapping.path} exact={mapping.exact}>
+            {mapping.jsx}
+          </Route>
+        ))}
       </Switch>
     </Fragment>
   );
