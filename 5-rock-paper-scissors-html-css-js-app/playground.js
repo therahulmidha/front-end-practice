@@ -7,7 +7,7 @@ const finalPlayerScore = document.getElementById("final-player-score");
 const finalComputerScore = document.getElementById("final-computer-score");
 
 function processPlayerMove(move) {
-  let allowPlayerWin = getAllowPlayerWinFlag();
+  let allowPlayerWin = difficulty === "Easy" ? true : false;
   switch (move) {
     case "Rock":
       if (allowPlayerWin) {
@@ -69,8 +69,8 @@ function getAllowPlayerWinFlag() {
       return (
         allowPlayerWin % 2 === 0 ||
         allowPlayerWin % 3 === 0 ||
-        allowPlayerWin % 4 === 0 || 
-        allowPlayerWin % 6 === 0 
+        allowPlayerWin % 4 === 0 ||
+        allowPlayerWin % 6 === 0
       );
     case "Hard":
       return allowPlayerWin % 5 === 0;
