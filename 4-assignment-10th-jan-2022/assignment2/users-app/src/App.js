@@ -3,6 +3,7 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar/Navbar";
 import { routes } from "./routes";
+import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
   return (
@@ -11,7 +12,11 @@ function App() {
       <Switch>
         {routes.map((mapping) => (
           <Route path={mapping.path} exact={mapping.exact}>
-            {mapping.jsx}
+            {mapping.isLoggedIn ? (
+              <ProtectedRoute>{mapping.jsx}</ProtectedRoute>
+            ) : (
+              mapping.jsx
+            )}
           </Route>
         ))}
       </Switch>

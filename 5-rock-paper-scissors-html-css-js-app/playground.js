@@ -5,74 +5,85 @@ const playerMove = document.querySelector("#player-move > img");
 const computerMove = document.querySelector("#computer-move > img");
 const finalPlayerScore = document.getElementById("final-player-score");
 const finalComputerScore = document.getElementById("final-computer-score");
-
+const result = document.getElementById("result");
+const IMAGES_FOLDER = "images";
+const playerMovesObject = {
+  Rock: {
+    computerSrcOnLose: `${IMAGES_FOLDER}/scissor.png`,
+    computerSrcOnWin: `${IMAGES_FOLDER}/paper.png`,
+  },
+  Paper: {
+    computerSrcOnLose: `${IMAGES_FOLDER}/rock.png`,
+    computerSrcOnWin: `${IMAGES_FOLDER}/scissor.png`,
+  },
+  Scissor: {
+    computerSrcOnLose: `${IMAGES_FOLDER}/paper.png`,
+    computerSrcOnWin: `${IMAGES_FOLDER}/rock.png`,
+  },
+};
 function processPlayerMove(move) {
   let allowPlayerWin = difficulty === "Easy" ? true : false;
-  switch (move) {
-    case "Rock":
-      if (allowPlayerWin) {
-        computerMove.setAttribute("src", "images/scissor.png");
-        finalPlayerScore.innerText = +finalPlayerScore.innerText + 1;
-      } else {
-        finalComputerScore.innerText = +finalComputerScore.innerText + 1;
-        computerMove.setAttribute("src", "images/paper.png");
-      }
-      break;
-    case "Paper":
-      if (allowPlayerWin) {
-        computerMove.setAttribute("src", "images/rock.png");
-        finalPlayerScore.innerText = +finalPlayerScore.innerText + 1;
-      } else {
-        finalComputerScore.innerText = +finalComputerScore.innerText + 1;
-        computerMove.setAttribute("src", "images/scissor.png");
-      }
-      break;
-    case "Scissor":
-      if (allowPlayerWin) {
-        computerMove.setAttribute("src", "images/paper.png");
-        finalPlayerScore.innerText = +finalPlayerScore.innerText + 1;
-      } else {
-        finalComputerScore.innerText = +finalComputerScore.innerText + 1;
-        computerMove.setAttribute("src", "images/rock.png");
-      }
-      break;
+  if (allowPlayerWin) {
+    incrementPlayerScore();
+    updateComputerMoveSrc(playerMovesObject[move].computerSrcOnLose);
+  } else {
+    incrementComputerScore();
+    updateComputerMoveSrc(playerMovesObject[move].computerSrcOnWin);
   }
 
-  playerMove.setAttribute("src", `images/${move.toLowerCase()}.png`);
+  updatePlayerMoveSrc(`images/${move.toLowerCase()}.png`);
   if (+finalPlayerScore.innerText >= 5 || +finalComputerScore.innerText >= 5) {
     const winMessage =
       +finalPlayerScore.innerText > +finalComputerScore.innerText
         ? "You Win!"
         : "CPU Wins!";
-    document.getElementById("result").innerText = winMessage;
-    Array.from(
-      document.getElementsByClassName("player-controls")[0].children
-    ).forEach((btn) => (btn.disabled = true));
+    result.innerText = winMessage;
+    enablePlayerControls(true);
   }
+}
+
+function incrementPlayerScore() {
+  finalPlayerScore.innerText = +finalPlayerScore.innerText + 1;
+}
+
+function incrementComputerScore() {
+  finalComputerScore.innerText = +finalComputerScore.innerText + 1;
+}
+
+function updatePlayerMoveSrc(src) {
+  playerMove.setAttribute("src", src);
+}
+
+function updateComputerMoveSrc(src) {
+  computerMove.setAttribute("src", src);
 }
 
 function resetGame() {
-  document.getElementById("final-player-score").innerText =
-    document.getElementById("final-computer-score").innerText = 0;
-  Array.from(
-    document.getElementsByClassName("player-controls")[0].children
-  ).forEach((btn) => (btn.disabled = false));
-  document.getElementById("result").innerText = "Whoever scores 5 first wins!";
-  playerMove.setAttribute("src", `images/paper.png`);
-  computerMove.setAttribute("src", `images/paper.png`);
+  finalPlayerScore.innerText = finalComputerScore.innerText = 0;
+  enablePlayerControls(false);
+  result.innerText = "Whoever scores 5 first wins!";
+  updatePlayerMoveSrc(`images/paper.png`);
+  updateComputerMoveSrc(`images/paper.png`);
 }
 
-function getAllowPlayerWinFlag() {
-  let allowPlayerWin = Math.floor(Math.random() * 10);
-  switch (difficulty) {
-    case "Easy":
-      return (
-        allowPlayerWin % 2 === 0 ||
-        allowPlayerWin % 3 === 0 ||
-        allowPlayerWin % 4 === 0 ||
-        allowPlayerWin % 6 === 0
-      );
-    case "Hard":
-      return allowPlayerWin % 5 === 0;
-  }
+function enablePlayerControls(enable) {
+  Array.from(
+    document.getElementsByClassName("player-controls")[0].children
+  ).forEach((btn) => (btn.disabled = enable));
 }
+
+// uncomment and use this function if random logic required for winning rounds
+// function getAllowPlayerWinFlag() {
+//   let allowPlayerWin = Math.floor(Math.random() * 10);
+//   switch (difficulty) {
+//     case "Easy":
+//       return (
+//         allowPlayerWin % 2 === 0 ||
+//         allowPlayerWin % 3 === 0 ||
+//         allowPlayerWin % 4 === 0 ||
+//         allowPlayerWin % 6 === 0
+//       );
+//     case "Hard":
+//       return allowPlayerWin % 5 === 0;
+//   }
+// }
