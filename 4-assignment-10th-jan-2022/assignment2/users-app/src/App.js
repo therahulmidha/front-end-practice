@@ -12,7 +12,7 @@ function App() {
       <Switch>
         {routes.map((mapping) => (
           <Route path={mapping.path} exact={mapping.exact}>
-            {mapping.isLoggedIn ? (
+            {mapping.loginCheckRequired ? (
               <ProtectedRoute>{mapping.jsx}</ProtectedRoute>
             ) : (
               mapping.jsx
